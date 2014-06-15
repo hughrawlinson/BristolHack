@@ -1,23 +1,35 @@
 'use strict';
 
-define(["MelodySequencer"],function(MelodySequencer){
-    function Lead(context, destination=context.destination, type = "triangle"){
+define(["MelodySequencer","utils"],function(MelodySequencer,u){
+    function Lead(context, destination=context.destination, type = "sawtooth"){
         this.context = context;
         this.osc = context.createOscillator();
         this.lpf = context.createBiquadFilter();
         this.gain = context.createGain();
-        this.lpf.frequency.value = 1500;
-        this.lpf.Q.value = 20;
+        this.lpf.frequency.value = 600;
+        this.lpf.Q.value = 35;
         this.lpf.type.value = "lowpass";
         this.lpf.gain.value = 1;
-        this.osc.type = "triangle";
         this.osc.connect(this.lpf);
         this.gain.value = 0;
         this.lpf.connect(this.gain);
         this.gain.connect(destination)
         this.osc.start(0);
         var controller = this;
-        this.melseq = new MelodySequencer(0,function(freq, tempo){
+        controller.val = false;
+        this.melseq = new MelodySequencer(-3,function(freq, tempo){
+            document.dispatchEvent(new CustomEvent(
+            	"percTrigger",
+            	{
+            		detail: {
+            			message: controller.val,
+            			time: new Date(),
+            		},
+            		bubbles: true,
+            		cancelable: true
+            	}
+            ));
+            controller.val = !controller.val;
             var t = tempo / 1000;
             t = t > 0.5 ? 0.5 : t;
             controller.gain.gain.value = 0;

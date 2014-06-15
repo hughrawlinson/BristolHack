@@ -9,7 +9,7 @@ define(["utils"],function(u){
         var counter = 0;
         var controller = this;
         setInterval(function(){
-            callback(u.mtof(controller.pattern[counter]+(frequency*12)));
+            callback(u.mtof(controller.pattern[counter]+(frequency*12)),tempo);
             counter++;
             if (counter % controller.pattern.length == 0) counter = 0;
         },tempo)

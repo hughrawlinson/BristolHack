@@ -1,6 +1,19 @@
 extends layout
 
 block content
-    h1= title
-    p Welcome to #{title}
-    button#kick.btn.btn-primary Kick
+    style body{background:#000 !important;}
+    audio(src="kick.mp3")#kick
+    audio(src="snare.mp3")#snare
+    .col-sm-12
+        canvas#vis(style="width:800px;height:400px")
+    .modal.fade#paypal
+        .modal-dialog
+            .modal-content
+              .modal-header
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                h4.modal-title Modal title
+              .modal-body
+                p One fine body…
+              .modal-footer
+                button.btn.btn-default(type='button', data-dismiss='modal') Close
+                button.btn.btn-primary(type='button') Save changes
