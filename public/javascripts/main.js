@@ -16,9 +16,9 @@ require.config({
 
 require(['jquery','InstrumentManager','Vis',"jquery.bootstrap"], function($,InstrumentManager,Vis) {
     // $('#paypal').modal();
-    $(document).ready(function(){
-        var v = new Vis();
-    })
+    // $(document).ready(function(){
+    //     var v = new Vis();
+    // })
 
 
 

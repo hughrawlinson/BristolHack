@@ -4,8 +4,15 @@ block content
     style body{background:#000 !important;}
     audio(src="kick.mp3")#kick
     audio(src="snare.mp3")#snare
-    .col-sm-12
-        canvas#vis(style="width:800px;height:400px")
+    img(src="images/enogen-logo.png" style="margin-top:50px").center-block
+    .col-sm-1
+        button.btn.btn-primary(type="button")#lead Lead
+    .col-sm-1
+        button.btn.btn-primary(type="button")#backing Backing
+    .col-sm-1
+        button.btn.btn-primary(type="button")#accompaniment Accompaniment
+
+    //-     canvas#vis(style="width:800px;height:400px")
     .modal.fade#paypal
         .modal-dialog
             .modal-content
