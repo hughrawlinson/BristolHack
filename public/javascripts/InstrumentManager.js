@@ -1,40 +1,41 @@
+/* global define */
 'use strict';
 
-define(["jquery","Lead","Bass","Perc"],function($,Lead,Bass,Perc){
+define(['jquery','Lead','Bass','Perc'],function($,Lead,Bass,Perc){
     var InstrumentManager = function(){
-        self.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         var instruments = [];
 
         $('#lead').click(function(){
             $(this).toggleClass('btn-danger');
             $(this).toggleClass('btn-primary');
-            if(instruments['lead1']==undefined){
-                instruments['lead1'] = new Lead(self.audioCtx);
+            if(instruments.lead1===undefined){
+                instruments.lead1 = new Lead(audioCtx);
             }
             else{
-                delete instruments['lead1'];
+                delete instruments.lead1;
             }
         });
         $('#backing').click(function(){
             $(this).toggleClass('btn-danger');
             $(this).toggleClass('btn-primary');
-            if(instruments['lead2']==undefined){
-                instruments['lead2'] = new Lead(self.audioCtx);
+            if(instruments.lead2===undefined){
+                instruments.lead2 = new Lead(audioCtx);
             }
             else{
-                delete instruments['lead2'];
+                delete instruments.lead2;
             }
         });
         $('#accompaniment').click(function(){
             $(this).toggleClass('btn-danger');
             $(this).toggleClass('btn-primary');
-            if(instruments['bass']==undefined&&instruments['perc']==undefined){
-                instruments['bass'] = new Bass(self.audioCtx);
-                instruments['perc'] = new Perc(self.audioCtx);
+            if(instruments.bass===undefined&&instruments.perc===undefined){
+                instruments.bass = new Bass(audioCtx);
+                instruments.perc = new Perc(audioCtx);
             }
             else{
-                delete instruments['bass'];
-                delete instruments['perc'];
+                delete instruments.bass;
+                delete instruments.perc;
             }
         });
 
@@ -42,7 +43,7 @@ define(["jquery","Lead","Bass","Perc"],function($,Lead,Bass,Perc){
         //@todo: reverb
         //@todo: visualization
         //@todo: paypal
-    }
+    };
 
     return InstrumentManager;
 });
