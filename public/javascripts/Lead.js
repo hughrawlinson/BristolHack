@@ -12,7 +12,7 @@ define(["MelodySequencer"],function(MelodySequencer){
         this.lpf.gain.value = 1;
         this.osc.type = "triangle";
         this.osc.connect(this.lpf);
-        this.gain.value = 0;
+        this.gain.gain.value = 0;
         this.lpf.connect(this.gain);
         this.gain.connect(destination)
         this.osc.start(0);

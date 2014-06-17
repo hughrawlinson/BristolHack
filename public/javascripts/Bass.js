@@ -7,11 +7,12 @@ define(["MelodySequencer","utils"],function(MelodySequencer,u){
         this.lpf = context.createBiquadFilter();
         this.gain = context.createGain();
         this.lpf.frequency.value = 600;
-        this.lpf.Q.value = 35;
+        this.lpf.Q.value = 1;
         this.lpf.type.value = "lowpass";
         this.lpf.gain.value = 1;
         this.osc.connect(this.lpf);
-        this.gain.value = 0;
+        this.osc.type = "sawtooth";
+        this.gain.gain.value = 0;
         this.lpf.connect(this.gain);
         this.gain.connect(destination)
         this.osc.start(0);
