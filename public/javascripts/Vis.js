@@ -1,7 +1,5 @@
-/* globals define */
-'use strict';
-
 define(['jquery'],function($){
+    'use strict';
     var v = $('#vis');
     function Vis(){
         this.canvas = v;

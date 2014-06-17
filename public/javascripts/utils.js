@@ -1,5 +1,3 @@
-/* globals define*/
-'use strict';
 define([],function(){
     return {
         'rint': function(limit){

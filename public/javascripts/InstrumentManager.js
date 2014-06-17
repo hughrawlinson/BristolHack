@@ -1,6 +1,3 @@
-/* global define */
-'use strict';
-
 define(['jquery','Lead','Bass','Perc'],function($,Lead,Bass,Perc){
     var InstrumentManager = function(){
         var audioCtx = new (window.AudioContext || window.webkitAudioContext)();

@@ -1,6 +1,3 @@
-/* globals define */
-'use strict';
-
 define(['MelodySequencer'],function(MelodySequencer){
     function Lead(context, destination=context.destination, type = 'sawtooth'){
         this.context = context;

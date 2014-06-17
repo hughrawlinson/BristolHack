@@ -1,6 +1,3 @@
-/* globals define */
-'use strict';
-
 define(['utils'],function(u){
     var notes = [57, 59, 60, 62, 64, 65, 67, 69, 71, 72, 74, 76, 77, 79];
 

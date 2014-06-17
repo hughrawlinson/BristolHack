@@ -1,7 +1,5 @@
-/* globals define */
-'use strict';
-
 define(['jquery'],function($){
+    'use strict';
     function Perc(){
 
         var kick = function(){
@@ -13,7 +11,11 @@ define(['jquery'],function($){
         };
 
         document.addEventListener('percTrigger',function(msg){
-            msg.detail.message===false?kick():snare();
+            if(msg.detail.message===false){
+                kick();
+            } else {
+                snare();
+            }
         },false);
     }
 
