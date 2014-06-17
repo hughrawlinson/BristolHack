@@ -1,26 +1,27 @@
+/* globals define */
 'use strict';
 
-define(["MelodySequencer","utils"],function(MelodySequencer,u){
-    function Lead(context, destination=context.destination, type = "sawtooth"){
+define(['MelodySequencer'],function(MelodySequencer){
+    function Lead(context, destination=context.destination, type = 'sawtooth'){
         this.context = context;
         this.osc = context.createOscillator();
         this.lpf = context.createBiquadFilter();
         this.gain = context.createGain();
         this.lpf.frequency.value = 600;
         this.lpf.Q.value = 1;
-        this.lpf.type.value = "lowpass";
+        this.lpf.type.value = 'lowpass';
         this.lpf.gain.value = 1;
         this.osc.connect(this.lpf);
-        this.osc.type = "sawtooth";
+        this.osc.type = type;
         this.gain.gain.value = 0;
         this.lpf.connect(this.gain);
-        this.gain.connect(destination)
+        this.gain.connect(destination);
         this.osc.start(0);
         var controller = this;
         controller.val = false;
         this.melseq = new MelodySequencer(-3,function(freq, tempo){
             document.dispatchEvent(new CustomEvent(
-            	"percTrigger",
+            	'percTrigger',
             	{
             		detail: {
             			message: controller.val,

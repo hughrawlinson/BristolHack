@@ -1,6 +1,7 @@
+/* globals define */
 'use strict';
 
-define(["utils"],function(u){
+define(['utils'],function(u){
     var notes = [57, 59, 60, 62, 64, 65, 67, 69, 71, 72, 74, 76, 77, 79];
 
     function MelodySequencer(frequency,callback){
@@ -11,8 +12,8 @@ define(["utils"],function(u){
         setInterval(function(){
             callback(u.mtof(controller.pattern[counter]+(frequency*12)),tempo);
             counter++;
-            if (counter % controller.pattern.length == 0) counter = 0;
-        },tempo)
+            if (counter % controller.pattern.length === 0){ counter = 0; }
+        },tempo);
     }
     MelodySequencer.prototype.generatePattern = function(){
         var len = u.rint(12)+4;

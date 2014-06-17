@@ -31,7 +31,7 @@ define(['jquery','Lead','Bass','Perc'],function($,Lead,Bass,Perc){
             $(this).toggleClass('btn-primary');
             if(instruments.bass===undefined&&instruments.perc===undefined){
                 instruments.bass = new Bass(audioCtx);
-                instruments.perc = new Perc(audioCtx);
+                instruments.perc = new Perc();
             }
             else{
                 delete instruments.bass;
